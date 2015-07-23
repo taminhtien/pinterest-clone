@@ -1,4 +1,9 @@
 .col-md-6.col-md-offset-3
-  %h1 New pin
-  = render 'form'
-  = link_to "Back", root_path, class: "btn btn-default"
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h1 New pin
+      .panel-body
+        = render 'form'
+      .panel-footer
+        = link_to "Back", root_path, class: "btn btn-default"

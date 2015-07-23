@@ -17,12 +17,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@mixin box-shadow {
+	-webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+}
+
 body {
 	background: #E9E9E9;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 100;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	@include box-shadow;
+	background: white;
+	font-weight: bold;
 }
 
 nav {

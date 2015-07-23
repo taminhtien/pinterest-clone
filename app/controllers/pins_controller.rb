@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
   before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authorized_user, only: [:edit, :update, :destroy]
   def index
     @pins = Pin.all
   end
@@ -49,5 +51,10 @@ class PinsController < ApplicationController
 
     def pin_params
       params.require(:pin).permit(:title, :description, :image)
+    end
+
+    def authorized_user
+      @pin = current_user.pins.find_by(id: params[:id])
+      redirect_to pins_path, notice: "Not authorized this recipe" if @pin.nil?
     end
 end
