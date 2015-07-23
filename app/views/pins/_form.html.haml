@@ -8,6 +8,7 @@
         %li= msg
 
   .form-inputs
+    = f.input :image, required: true, input_html: { class: "form-control" }
     = f.input :title, required: true, input_html: { class: "form-control" }
     = f.input :description, required: true, input_html: { class: "form-control" }
 
