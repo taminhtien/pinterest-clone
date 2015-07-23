@@ -11,8 +11,13 @@
     .container
       .navbar-brand= link_to "pin board", root_path
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to "New pin", new_pin_path
-        %li= link_to "Sign out", "#"
+        - if user_signed_in?
+          %li= link_to "New pin", new_pin_path
+          %li= link_to current_user.email, edit_user_registration_path
+          %li= link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %li= link_to "Sign up", new_user_registration_path
+          %li= link_to "Sign in", new_user_session_path
   .container
     - flash.each do |name, msg|
       = content_tag :div, msg, class: "alert alert-#{name}"
